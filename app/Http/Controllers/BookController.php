@@ -19,7 +19,7 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index()
     {
@@ -55,9 +55,9 @@ class BookController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function show($id)
-    {  echo $id;
-//        $book = $this->objBook->find($id);
-//        return view('show',compact('book'));
+    {
+        $book = $this->objBook->find($id);
+        return view('show',compact('book'));
     }
 
     /**

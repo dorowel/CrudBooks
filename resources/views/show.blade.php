@@ -11,15 +11,20 @@
             $user = $book->find($book->id)->relUsers;
        @endphp
 
-    Titulo: {{$book->title}}<br>
-    Paginas: {{$book->pages}}<br>
-    Price: R$ {{$book->price}}<br>
-    Autor: {{$user->name}}<br>
-    Email: {{$user->email}}<br>
+           <strong>Titulo:</strong> {{$book->title}}<br>
+           <strong>Paginas:</strong> {{$book->pages}}<br>
+           <strong>Price: R$</strong> {{$book->price}}<br>
+           <strong>Autor:</strong> {{$user->name}}<br>
+           <strong>Email:</strong> {{$user->email}}<br>
        @else
 {{--           <p>Livro não encontrado</p>--}}
         {{url('books/create')}}
 
        @endif
+       <div class="text-center">
+           <a href="{{url('books')}}">
+               <button class="button btn btn-primary">Voltar para Home</button>
+           </a>
+       </div>
    </div>
 @endsection

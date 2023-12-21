@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use http\Exception;
 use Illuminate\Http\Request;
 use App\Models\ModelBook;
 use App\User;
@@ -34,18 +35,28 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $users = $this->objUser->all();
+        return view('create',compact('users'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        //
+        $cad = $this->objBook->create([
+            'title'=>$request->title,
+            'pages'=>$request->pages,
+            'price'=>$request->price,
+            'id_user'=>$request->id_user
+        ]);
+        if($cad) {
+
+            return redirect('books');
+        }
     }
 
     /**

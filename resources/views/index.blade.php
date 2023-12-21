@@ -1,9 +1,9 @@
 @extends('templates.templates')
 
 @section('content')
-    <h1 class="text-center"><img src="asserts\img\book.svg" alt="Livro" height="50" width="50"> Crud the Books</h1>
+    <h1 class="text-center m-3 m-4"><img src="asserts\img\book.svg" alt="Livro" height="50" width="50"> Crud the Books</h1>
     <div class="text-center">
-        <a href="">
+        <a href="{{url('books/create')}}">
             <button class="btn btn-success">Cadastrar</button>
         </a>
     </div>

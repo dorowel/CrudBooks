@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookRequest;
 use http\Exception;
-use Illuminate\Http\Request;
 use App\Models\ModelBook;
 use App\User;
 
@@ -45,7 +45,7 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
         $cad = $this->objBook->create([
             'title'=>$request->title,
@@ -75,11 +75,13 @@ class BookController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $book = $this->objBook->find($id);
+        $users = $this->objUser->all();
+        return view('create',compact('book','users'));
     }
 
     /**
@@ -87,11 +89,18 @@ class BookController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(BookRequest $request, $id)
     {
-        //
+        $this->objBook->where(['id'=>$id])->update([
+            'title'=>$request->title,
+            'pages'=>$request->pages,
+            'price'=>$request->price,
+            'id_user'=>$request->id_user
+        ]);
+
+        return redirect('books');
     }
 
     /**

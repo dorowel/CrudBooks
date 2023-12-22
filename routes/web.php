@@ -21,6 +21,8 @@ Route::get('/books','BookController@index');
 Route::get('/books/create','BookController@create')->name('create');
 Route::get('/books/{id}','BookController@show')->name('show');
 Route::post('/books','BookController@store')->name('store');
+Route::get('/books/{id}/edit','BookController@edit')->name('edit');
+Route::put('/books/{id}','BookController@update')->name('update');
 
 
 

@@ -8,6 +8,7 @@
         </a>
     </div>
    <div class="col-8 m-auto">
+       @csrf
     <table class="table caption-top text-center">
         <caption>Lista de Livros</caption>
         <thead class="table-dark">
@@ -30,13 +31,13 @@
                 <td>{{$user->name}}</td>
                 <td>R${{$books->price}}</td>
                 <td>
-                    <a href="{{url("books/$books->id")}}">
+                    <a href="{{url("books/$books->id/show")}}">
                         <button class="btn btn-dark">Visualizar</button>
                     </a>
                     <a href="{{url("books/$books->id/edit")}}">
                         <button class="btn btn-primary">Editar</button>
                     </a>
-                    <a href="">
+                    <a href="{{url("books/$books->id")}}" class="js-del">
                         <button class="btn btn-danger">Deletar</button>
                     </a>
                 </td>

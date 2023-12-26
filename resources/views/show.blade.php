@@ -1,7 +1,7 @@
 @extends('templates.templates')
 
 @section('content')
-    <h1 class="text-center m-3 m-4">Visualizar</h1>
+    <h1 class="text-center m-3 m-4"><img src="..\..\asserts\img\book.svg" alt="Livro" height="50" width="50"> Visualizar Detalhes do Livro</h1>
     <div class="text-center">
 
     </div>
@@ -22,6 +22,7 @@
 
        @endif
        <div class="text-center">
+           <br>
            <a href="{{url('books')}}">
                <button class="button btn btn-primary">Voltar para Home</button>
            </a>

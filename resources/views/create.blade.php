@@ -1,7 +1,8 @@
 @extends('templates.templates')
 
 @section('content')
-    <h1 class="text-center m-3 m-4"> @if(isset($book))Editar Cadastrar de Livros @else Cadastrar Livros @endif</h1>
+
+    <h1 class="text-center m-3 m-4"><img src="..\..\asserts\img\book.svg" alt="Livro" height="50" width="50"> @if(isset($book))Editar Cadastrar de Livros @else Cadastrar Livros @endif</h1>
 
    <div class="col-8 m-auto">
 
@@ -20,15 +21,19 @@
             @endif
 
         @csrf
-    <input class="form-control m-2" type="text" name="title" id="title" placeholder="Titulo" value="{{$book->title}}" required>
+                 <caption><strong>Titulo</strong></caption>
+    <input class="form-control m-2" type="text" name="title" id="title" placeholder="Titulo" value="@if(isset($book)){{$book->title}} @else  @endif" required>
+        <caption><strong>Autor</strong></caption>
         <select class="form-control m-2" name="id_user" id="id_user"  required>
-            <option value="{$book->relUsers->id}}">{{$book->relUsers->name}}</option>
+            <option value="{$book->relUsers->id}}">@if(isset($book)) {{$book->relUsers->name}}@else @endif</option>
             @foreach($users as $user)
                 <option value="{{$user->id}}">{{$user->name}}</option>
             @endforeach
         </select>
-    <input class="form-control m-2" type="text" name="pages" id="pages" placeholder="Paginas" value="{{$book->pages}}" required>
-    <input class="form-control m-2" type="text" name="price" id="price" placeholder="Price" value="{{$book->price}}" required>
+    <caption><strong>Paginas</strong></caption>
+    <input class="form-control m-2" type="text" name="pages" id="pages" placeholder="Paginas" value=" @if(isset($book)){{$book->pages}} @else  @endif" required>
+    <caption><strong>Price</strong></caption>
+    <input class="form-control m-2" type="text" name="price" id="price" placeholder="Price" value="@if(isset($book)){{$book->price}} @else  @endif" required>
         <input  class="btn btn-primary m-2" type="submit" value="@if(isset($book))Editar @else Cadastrar @endif">
     </form>
    </div>

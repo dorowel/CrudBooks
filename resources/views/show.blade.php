@@ -21,7 +21,7 @@
         {{url('books/create')}}
 
        @endif
-       <div class="text-center">
+       <div class="text-left">
            <br>
            <a href="{{url('books')}}">
                <button class="button btn btn-primary">Voltar para Home</button>

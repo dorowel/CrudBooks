@@ -2,7 +2,7 @@
   'use strict';
 
   function confirmDel(event)
-  { console.log('padddd');
+  {
       event.preventDefault();
       let token = doc.getElementsByName("_token")[0].value;
       if(confirm("Deseja mesmo apagar?")) {
